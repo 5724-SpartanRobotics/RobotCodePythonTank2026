@@ -9,6 +9,7 @@
 import wpilib
 import wpilib.drive
 import phoenix5
+from phoenix5 import WPI_VictorSPX
 
 class MyRobot(wpilib.TimedRobot):
     """
@@ -19,21 +20,21 @@ class MyRobot(wpilib.TimedRobot):
     def robotInit(self):
         """Robot initialization function"""
 
-        leftMotor1 = phoenix5.VictorSPX(1)
-        leftMotor2 = phoenix5.VictorSPX(2)
-        rightMotor1 = phoenix5.VictorSPX(3)
-        rightMotor2 = phoenix5.VictorSPX(4)
+        self.leftMotor1 = phoenix5.WPI_VictorSPX(1)
+        self.leftMotor2 = phoenix5.WPI_VictorSPX(2)
+        self.rightMotor1 = phoenix5.WPI_VictorSPX(3)
+        self.rightMotor2 = phoenix5.WPI_VictorSPX(4)
 
-        leftMotor2.follow(leftMotor1)
-        rightMotor2.follow(rightMotor1)
+        self.leftMotor2.follow(self.leftMotor1)
+        self.rightMotor2.follow(self.rightMotor1)
 
-        self.robotDrive = wpilib.drive.DifferentialDrive(leftMotor1, rightMotor1)
+        self.robotDrive = wpilib.drive.DifferentialDrive(self.leftMotor1, self.rightMotor1)
         self.driverController = wpilib.XboxController(0)
 
         # We need to invert one side of the drivetrain so that positive voltages
         # result in both sides moving forward. Depending on how your robot's
         # gearbox is constructed, you might have to invert the left side instead.
-        rightMotor.setInverted(True)
+        self.rightMotor1.setInverted(True)
 
     def teleopPeriodic(self):
         # Drive with split arcade style

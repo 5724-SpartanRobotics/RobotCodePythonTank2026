@@ -1,0 +1,41 @@
+E       TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:
+E           1. wpilib.drive._drive.DifferentialDrive(leftMotor: wpilib.interfaces._interfaces.MotorController, rightMotor: wpilib.interfaces._interfaces.MotorController)
+E           2. wpilib.drive._drive.DifferentialDrive(leftMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None], rightMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None])
+E
+E       Invoked with: <VictorSPX 1>, <VictorSPX 3>
+
+robot.py:30: TypeError
+
+
+
+
+E       TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:
+E           1. wpilib.drive._drive.DifferentialDrive(leftMotor: wpilib.interfaces._interfaces.MotorController, rightMotor: wpilib.interfaces._interfaces.MotorController)
+E           2. wpilib.drive._drive.DifferentialDrive(leftMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None], rightMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None])
+E
+E       Invoked with: <VictorSPX 1>, <VictorSPX 3>
+
+robot.py:30: TypeError
+
+E       TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:
+E           1. wpilib.drive._drive.DifferentialDrive(leftMotor: wpilib.interfaces._interfaces.MotorController, rightMotor: wpilib.interfaces._interfaces.MotorController)
+E           2. wpilib.drive._drive.DifferentialDrive(leftMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None], rightMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None])
+E
+E       Invoked with: <VictorSPX 1>, <VictorSPX 3>
+
+robot.py:30: TypeError
+
+
+
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: __init__(): incompatible constructor arguments. The following argument types are supported:
+E           1. wpilib.drive._drive.DifferentialDrive(leftMotor: wpilib.interfaces._interfaces.MotorController, rightMotor: wpilib.interfaces._interfaces.MotorController)
+E           2. wpilib.drive._drive.DifferentialDrive(leftMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None], rightMotor: collections.abc.Callable[[typing.SupportsFloat | typing.SupportsIndex], None])
+E
+E       Invoked with: <VictorSPX 1>, <VictorSPX 3>
+
+robot.py:30: TypeError
+
+
+
+
