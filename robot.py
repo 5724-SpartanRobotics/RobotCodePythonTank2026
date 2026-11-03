@@ -32,6 +32,11 @@ class MyRobot(wpilib.TimedRobot):
         self.rightMotor1 = phoenix5.WPI_VictorSPX(3)
         self.rightMotor2 = phoenix5.WPI_VictorSPX(4)
 
+        self.leftMotor1.setNeutralMode(phoenix5.NeutralMode.Brake)
+        self.leftMotor2.setNeutralMode(phoenix5.NeutralMode.Brake)
+        self.rightMotor1.setNeutralMode(phoenix5.NeutralMode.Brake)
+        self.rightMotor2.setNeutralMode(phoenix5.NeutralMode.Brake)
+
         self.leftMotor2.follow(self.leftMotor1)
         self.rightMotor2.follow(self.rightMotor1)
 
