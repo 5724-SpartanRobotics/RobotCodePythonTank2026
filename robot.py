@@ -19,7 +19,14 @@ class MyRobot(wpilib.TimedRobot):
 
     def robotInit(self):
         """Robot initialization function"""
+        #led things
+        self.led_length = 60
+        self.led = wpilib.AddressableLED(0)
+        self.led_buffer = [wpilib.AddressableLED.LEDData() for _ in range(self.led_length)]
+        
 
+
+        #motor stuff
         self.leftMotor1 = phoenix5.WPI_VictorSPX(1)
         self.leftMotor2 = phoenix5.WPI_VictorSPX(2)
         self.rightMotor1 = phoenix5.WPI_VictorSPX(3)
@@ -35,11 +42,25 @@ class MyRobot(wpilib.TimedRobot):
         # result in both sides moving forward. Depending on how your robot's
         # gearbox is constructed, you might have to invert the left side instead.
         self.rightMotor1.setInverted(True)
+    
+    def disabledPeriodic(self):
+        for i in range(self.led_length):
+            self.led_buffer[i].setRGB(0,255,255)
 
     def teleopPeriodic(self):
         # Drive with split arcade style
         # That means that the Y axis of the left stick moves forward
         # and backward, and the X of the right stick turns left and right.
         self.robotDrive.arcadeDrive(
-            -self.driverController.getLeftY(), -self.driverController.getRightX()
+            -self.driverController.getLeftX(), -self.driverController.getRightY()
         )
+
+        #led stuff api here:
+        # https://robotpy.readthedocs.io/projects/robotpy/en/stable/wpilib/AddressableLED.html#wpilib.AddressableLED
+        self.led.setLength(self.led_length)
+        self.led.start()
+        self.led.setData(self.led_buffer)
+        for i in range(self.led_length):
+            self.led_buffer[i].setRGB(255, 0, 0)
+        
+        
