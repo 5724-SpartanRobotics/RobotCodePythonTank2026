@@ -1,21 +1,8 @@
-# TODO: insert robot code here
-#!/usr/bin/env python3
-#
-# Copyright (c) FIRST and other WPILib contributors.
-# Open Source Software; you can modify and/or share it under the terms of
-# the WPILib BSD license file in the root directory of this project.
-#
-
 import wpilib
 import wpilib.drive
 import phoenix5
-from phoenix5 import WPI_VictorSPX
 
 class MyRobot(wpilib.TimedRobot):
-    """
-    This is a demo program showing the use of the DifferentialDrive class.
-    Runs the motors with split arcade steering and an Xbox controller.
-    """
 
     def robotInit(self):
         """Robot initialization function"""
@@ -24,7 +11,8 @@ class MyRobot(wpilib.TimedRobot):
         self.led = wpilib.AddressableLED(0)
         self.led_buffer = [wpilib.AddressableLED.LEDData() for _ in range(self.led_length)]
         
-
+        #power distribution board
+        self.pdp = wpilib.PowerDistribution(0, wpilib.PowerDistribution.ModuleType.kCTRE)
 
         #motor stuff
         self.leftMotor1 = phoenix5.WPI_VictorSPX(1)
@@ -68,4 +56,17 @@ class MyRobot(wpilib.TimedRobot):
         for i in range(self.led_length):
             self.led_buffer[i].setRGB(255, 0, 0)
         
+        # add pdp displays in to smart dashboard
+        # Get the total current of all channels.
+        totalCurrent = self.pdp.getTotalCurrent()
+        wpilib.SmartDashboard.putNumber("Total Current", totalCurrent)
+
+        # Get the total power of all channels.
+        totalPower = self.pdp.getTotalPower()
+        wpilib.SmartDashboard.putNumber("Total Power", totalPower)
+
+        # Get the total energy of all channels.
+        totalEnergy = self.pdp.getTotalEnergy()
+        wpilib.SmartDashboard.putNumber("Total Energy", totalEnergy)
+    
         
