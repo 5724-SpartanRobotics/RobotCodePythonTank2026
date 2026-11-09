@@ -2,15 +2,12 @@ import wpilib
 import wpilib.drive
 import phoenix5
 
+
 class MyRobot(wpilib.TimedRobot):
 
     def robotInit(self):
         """Robot initialization function"""
-        #led things
-        self.led_length = 60
-        self.led = wpilib.AddressableLED(0)
-        self.led_buffer = [wpilib.AddressableLED.LEDData() for _ in range(self.led_length)]
-        
+   
         #power distribution board
         self.pdp = wpilib.PowerDistribution(0, wpilib.PowerDistribution.ModuleType.kCTRE)
 
@@ -36,25 +33,15 @@ class MyRobot(wpilib.TimedRobot):
         # gearbox is constructed, you might have to invert the left side instead.
         self.rightMotor1.setInverted(True)
     
-    def disabledPeriodic(self):
-        for i in range(self.led_length):
-            self.led_buffer[i].setRGB(0,255,255)
 
     def teleopPeriodic(self):
         # Drive with split arcade style
         # That means that the Y axis of the left stick moves forward
         # and backward, and the X of the right stick turns left and right.
         self.robotDrive.arcadeDrive(
-            -self.driverController.getLeftX(), -self.driverController.getRightY()
+            -self.driverController.getLeftY(), -self.driverController.getRightX()
         )
 
-        #led stuff api here:
-        # https://robotpy.readthedocs.io/projects/robotpy/en/stable/wpilib/AddressableLED.html#wpilib.AddressableLED
-        self.led.setLength(self.led_length)
-        self.led.start()
-        self.led.setData(self.led_buffer)
-        for i in range(self.led_length):
-            self.led_buffer[i].setRGB(255, 0, 0)
         
         # add pdp displays in to smart dashboard
         # Get the total current of all channels.
@@ -69,4 +56,3 @@ class MyRobot(wpilib.TimedRobot):
         totalEnergy = self.pdp.getTotalEnergy()
         wpilib.SmartDashboard.putNumber("Total Energy", totalEnergy)
     
-        
