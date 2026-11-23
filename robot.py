@@ -61,7 +61,7 @@ class MyRobot(wpilib.TimedRobot):
         # That means that the Y axis of the left stick moves forward
         # and backward, and the X of the right stick turns left and right.
         self.robotDrive.arcadeDrive(
-            -self.driverController.getLeftY(), -self.driverController.getRightX()
+            self.driverController.getRightX(), -self.driverController.getRightY()
         )
         
         # Add pdp displays in to smart dashboard
